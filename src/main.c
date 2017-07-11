@@ -9,13 +9,13 @@
 
 int main(void)
 {
-    system_init();
+    system_init();          //系统初始化
 
-    user_init();
+    user_init();            //应用初始化
 
     while (1) {
-        user_loop();
+        user_loop();        //应用循环
 
-        system_suspend();
+        system_suspend();           //系统暂停
     }
 }
