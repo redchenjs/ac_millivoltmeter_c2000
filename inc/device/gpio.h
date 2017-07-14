@@ -1,7 +1,7 @@
 /*
  * gpio.h
  *
- *  Created on: 2017年7月7日
+ *  Created on: 2017-7-7
  *      Author: redchenjs
  */
 

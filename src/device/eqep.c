@@ -1,11 +1,11 @@
-#include <driverlib.h>
-#include <device.h>
 /*
  * eqep.c
  *
  *  Created on: 2017-7-6
  *      Author: redchenjs
  */
+#include <driverlib.h>
+#include <device.h>
 
 void eqep3_init(void)
 {

@@ -1,7 +1,7 @@
 /*
  * cpu_timer.c
  *
- *  Created on: 2017年6月29日
+ *  Created on: 2017-6-29
  *      Author: redchenjs
  */
 //

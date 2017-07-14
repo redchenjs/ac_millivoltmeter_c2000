@@ -1,3 +1,9 @@
+/*
+ * init.c
+ *
+ *  Created on: 2017-4-16
+ *      Author: redchenjs
+ */
 #include "driverlib.h"
 #include "device.h"
 
@@ -7,27 +13,42 @@
 #include <file.h>
 
 #include "F2837xD_sci_io.h"
-/*
- * init.c
- *
- *  Created on: 2017-4-16
- *      Author: redchenjs
- */
+
+#include "inc/device/spi.h"
+#include "inc/device/adc.h"
+#include "inc/device/gpio.h"
+#include "inc/device/eqep.h"
+#include "inc/device/cpu_timer.h"
+
+#include "inc/driver/ssd1351.h"
 
 volatile int scia_status = 0;
 volatile FILE *scia_fid;
 
+void device_init(void)
+{
+    spi_init();         // SPI总线
+    adc_init();         // ADC配置
+    gpio_init();        // GPIO配置
+    eqep3_init();       // eQEP配置
+    cpu_timer_init();   // CPU定时器配置
+}
+
+void driver_init(void)
+{
+    ssd1351_init();     // SSD1351显示屏
+}
+
 void system_init(void)
 {
-    Device_init();
-    Device_initGPIO();
+    Device_init();      // 器件初始化配置
+    Device_initGPIO();  // 器件GPIO初始化配置
 
-    Interrupt_initModule();
-    Interrupt_initVectorTable();
+    Interrupt_initModule();         // 初始化外设模块时钟
+    Interrupt_initVectorTable();    // 初始化中断向量表
 
-
-    EINT;
-    ERTM;
+    device_init();  // 器件外设功能模块初始化
+    driver_init();  // 外部设备驱动初始化
 
     //
     // Redirect STDOUT to SCI
@@ -37,9 +58,12 @@ void system_init(void)
     scia_fid = fopen("scia","w");
     freopen("scia:", "w", stdout);
     setvbuf(stdout, NULL, _IONBF, 0);
+
+    EINT;   // Enable interrupts
+    ERTM;   // Enable debug events
 }
 
 void system_suspend(void)
 {
-    DEVICE_DELAY_US(100000000);
+    DEVICE_DELAY_US(100000000); // 暂时使用器件延时指令作为休眠周期
 }

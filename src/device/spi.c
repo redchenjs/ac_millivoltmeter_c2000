@@ -1,11 +1,11 @@
-#include "driverlib.h"
-#include "device.h"
 /*
  * spi.c
  *
  *  Created on: 2017-4-16
  *      Author: redchenjs
  */
+#include "driverlib.h"
+#include "device.h"
 
 void spi_init(void)
 {

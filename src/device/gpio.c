@@ -1,11 +1,11 @@
-#include "driverlib.h"
-#include "device.h"
 /*
  * gpio.c
  *
- *  Created on: 2017年7月7日
+ *  Created on: 2017-7-7
  *      Author: redchenjs
  */
+#include "driverlib.h"
+#include "device.h"
 
 void gpio_init(void)
 {
