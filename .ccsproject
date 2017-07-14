@@ -14,4 +14,5 @@
 	<templateProperties value="id=com.ti.common.project.core.emptyProjectWithMainTemplate,"/>
 	<filesToOpen value="main.c,"/>
 	<isTargetManual value="false"/>
+	<origin value="/home/redchenjs/workspace/c2000/f28379d_ac_millivoltmeter"/>
 </projectOptions>
